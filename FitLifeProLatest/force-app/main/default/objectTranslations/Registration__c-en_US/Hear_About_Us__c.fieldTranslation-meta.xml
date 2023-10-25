@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Hear About Us --></label>
+        <name>Hear_About_Us__c</name>
+        <picklistValues>
+            <masterLabel>Referral</masterLabel>
+            <translation><!-- Referral --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Social Media</masterLabel>
+            <translation><!-- Social Media --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Trade show</masterLabel>
+            <translation><!-- Trade show --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>email Campaign</masterLabel>
+            <translation><!-- email Campaign --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>others</masterLabel>
+            <translation><!-- others --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

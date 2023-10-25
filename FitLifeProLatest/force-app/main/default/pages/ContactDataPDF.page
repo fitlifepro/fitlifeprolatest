@@ -1,0 +1,12 @@
+<apex:page Controller="PDFGenerateCtrl" renderAs="pdf">
+   <apex:image id="TOK_Logo" value="https://fitlifepro2-dev-ed.develop.file.force.com/sfc/dist/version/renditionDownload?rendition=ORIGINAL_Jpg&versionId=0685j00000KGeyq&operationContext=DELIVERY&contentId=05T5j00000phlhW&page=0&d=/a/5j000000Mlgw/jOnGaGCLWQMf3RX2fcgWWwPhubZSdiBiDbrcZZT_LvE&oid=00D5j00000CvHCi&dpt=T.p2.4_QOAvWai6444Z15pUJiO2VsUKaQQdlE9tDKRo=&viewId=" width="100" height="100%"  alt="TwentyOne Knots Logo" />
+  <h1>Gym Invoice</h1>
+  <p><b>Name :</b> {!con.First_Name__c}</p>  
+  <p><b>Email :</b> {!con.Email__c}</p>
+  <p><b>Area :</b> {!con.Area__c}</p> 
+  <p><b>Membership Plan :</b> {!con.Membership_Plan__c}</p>  
+    <p><b>Membership Start Date :</b> {!con.Membership_Start_Date__c}</p>
+    <p><b>Membership End Date :</b> {!con.Membership_End_Date__c}</p>
+     <p><b>Time Slot :</b> {!con.Time_Slot__c}</p>
+   
+</apex:page>

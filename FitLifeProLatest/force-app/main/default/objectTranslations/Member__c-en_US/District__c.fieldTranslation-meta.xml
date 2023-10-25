@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- District --></label>
+        <name>District__c</name>
+        <picklistValues>
+            <masterLabel>Chennai</masterLabel>
+            <translation><!-- Chennai --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Coimbatore</masterLabel>
+            <translation><!-- Coimbatore --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

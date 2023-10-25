@@ -1,0 +1,570 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <apiVersion>59.0</apiVersion>
+    <decisions>
+        <name>Checking_Subscription_Period</name>
+        <label>Checking Subscription Period</label>
+        <locationX>446</locationX>
+        <locationY>350</locationY>
+        <defaultConnector>
+            <targetReference>Live_Subscription</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Live Subscription</defaultConnectorLabel>
+        <rules>
+            <name>End_of_Subscription</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Get_Member_Records.Membership_End_Date__c</leftValueReference>
+                <operator>LessThan</operator>
+                <rightValue>
+                    <elementReference>$Flow.CurrentDate</elementReference>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Renewal</targetReference>
+            </connector>
+            <label>End of Subscription</label>
+        </rules>
+    </decisions>
+    <dynamicChoiceSets>
+        <name>Var_Membership</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true" />
+        <object xsi:nil="true" />
+        <picklistField>Membership_Plan__c</picklistField>
+        <picklistObject>Subscription__c</picklistObject>
+    </dynamicChoiceSets>
+    <dynamicChoiceSets>
+        <name>Var_PaymentOptions</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true" />
+        <object xsi:nil="true" />
+        <picklistField>Online_Payment_Options__c</picklistField>
+        <picklistObject>Payment__c</picklistObject>
+    </dynamicChoiceSets>
+    <dynamicChoiceSets>
+        <name>var_Subscription</name>
+        <dataType>Picklist</dataType>
+        <displayField xsi:nil="true" />
+        <object xsi:nil="true" />
+        <picklistField>Subscription_Type__c</picklistField>
+        <picklistObject>Subscription__c</picklistObject>
+    </dynamicChoiceSets>
+    <environments>Default</environments>
+    <formulas>
+        <name>For_AmountCalculation</name>
+        <dataType>Currency</dataType>
+        <expression>IF( {!Membership_Plan}==&#39;Silver&#39; &amp;&amp; {!Subscription_Type} == &#39;Monthly&#39;, 1000, 
+IF( {!Membership_Plan}== &#39;Gold&#39; &amp;&amp; {!Subscription_Type} == &#39;Monthly&#39; , 2000,
+IF( {!Membership_Plan}== &#39;Platinum&#39; &amp;&amp; {!Subscription_Type} ==  &#39;Monthly&#39; , 3000,
+IF( {!Membership_Plan}== &#39;Silver&#39; &amp;&amp; {!Subscription_Type} == &#39;Quarterly&#39; , 3000,
+IF( {!Membership_Plan}== &#39;Gold&#39; &amp;&amp; {!Subscription_Type} == &#39;Quarterly&#39; , 4000,
+IF( {!Membership_Plan}== &#39;Platinum&#39; &amp;&amp; {!Subscription_Type} == &#39;Quarterly&#39; , 6000,
+IF( {!Membership_Plan}== &#39;Silver&#39; &amp;&amp; {!Subscription_Type} == &#39;Annually&#39;, 7000,
+IF( {!Membership_Plan}== &#39;Gold&#39; &amp;&amp; {!Subscription_Type} == &#39;Annually&#39;, 9000,
+IF( {!Membership_Plan}== &#39;Platinum&#39; &amp;&amp; {!Subscription_Type} == &#39;Annually&#39; , 12000,
+0
+)))))))))</expression>
+        <scale>0</scale>
+    </formulas>
+    <formulas>
+        <name>For_CardValidation</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(LEN({!Card_Number})==12 , REGEX({!Card_Number},&quot;^[0-9]]*$&quot;))</expression>
+    </formulas>
+    <formulas>
+        <name>For_CVV_Validation</name>
+        <dataType>Boolean</dataType>
+        <expression>AND(LEN({!CVV})==3 , REGEX({!CVV},&quot;^[0-9]*$&quot;))</expression>
+    </formulas>
+    <formulas>
+        <name>For_SubscriptionName</name>
+        <dataType>String</dataType>
+        <expression>{!Get_Member_Records.First_Name__c} +&#39;-&#39;+ {!Membership_Plan}</expression>
+    </formulas>
+    <interviewLabel>FitLife Pro Subscription Renewal VF Flow {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>FitLife Pro Subscription Renewal VF Flow</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>Flow</processType>
+    <recordCreates>
+        <name>Create_Payment</name>
+        <label>Create Payment</label>
+        <locationX>50</locationX>
+        <locationY>782</locationY>
+        <connector>
+            <targetReference>Success</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Payment_Error</targetReference>
+        </faultConnector>
+        <inputAssignments>
+            <field>Amount__c</field>
+            <value>
+                <elementReference>For_AmountCalculation</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Member__c</field>
+            <value>
+                <elementReference>Get_Member_Records.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Online_Payment_Options__c</field>
+            <value>
+                <elementReference>Payment_Options</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Payment_Date__c</field>
+            <value>
+                <elementReference>Date</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Payment__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordCreates>
+        <name>Create_Subscription</name>
+        <label>Create Subscription</label>
+        <locationX>50</locationX>
+        <locationY>674</locationY>
+        <connector>
+            <targetReference>Create_Payment</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Sub_Error</targetReference>
+        </faultConnector>
+        <inputAssignments>
+            <field>Member__c</field>
+            <value>
+                <elementReference>Get_Member_Records.Id</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Membership_Plan__c</field>
+            <value>
+                <elementReference>Membership_Plan</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Name</field>
+            <value>
+                <elementReference>For_SubscriptionName</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Subscription_Type__c</field>
+            <value>
+                <elementReference>Subscription_Type</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Subscription__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordCreates>
+    <recordLookups>
+        <name>Get_Member_Records</name>
+        <label>Get Member Records</label>
+        <locationX>446</locationX>
+        <locationY>242</locationY>
+        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <connector>
+            <targetReference>Checking_Subscription_Period</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Error</targetReference>
+        </faultConnector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Name</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>Enter_your_Membership_ID</elementReference>
+            </value>
+        </filters>
+        <getFirstRecordOnly>true</getFirstRecordOnly>
+        <object>Member__c</object>
+        <storeOutputAutomatically>true</storeOutputAutomatically>
+    </recordLookups>
+    <runInMode>SystemModeWithoutSharing</runInMode>
+    <screens>
+        <name>Enter_Member_ID</name>
+        <label>Enter Member ID</label>
+        <locationX>446</locationX>
+        <locationY>134</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <connector>
+            <targetReference>Get_Member_Records</targetReference>
+        </connector>
+        <fields>
+            <name>Enter_your_Membership_ID</name>
+            <dataType>String</dataType>
+            <fieldText>Enter your Membership ID</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>Error</name>
+        <label>Error</label>
+        <locationX>1106</locationX>
+        <locationY>350</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>Error_Message</name>
+            <fieldText>&lt;p&gt;Unable to Get Member Record&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Live_Subscription</name>
+        <label>Live Subscription</label>
+        <locationX>842</locationX>
+        <locationY>458</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>sub</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;color: rgb(28, 124, 18); font-size: 20px;&quot;&gt;You have an active subscription ....&lt;/strong&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;span style=&quot;color: rgb(68, 68, 68); background-color: rgb(255, 255, 255); font-size: 16px;&quot;&gt;You can Renew your Membership Plan from &lt;/span&gt;...&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>Payment_Error</name>
+        <label>Payment Error</label>
+        <locationX>314</locationX>
+        <locationY>890</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>Pay_Err</name>
+            <fieldText>&lt;p&gt;Unable to create Payment Record!!!&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Payment_Screen</name>
+        <label>Payment Screen</label>
+        <locationX>50</locationX>
+        <locationY>566</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Create_Subscription</targetReference>
+        </connector>
+        <fields>
+            <name>Screen2</name>
+            <extensionName>flowruntime:image</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>imageName</name>
+                <value>
+                    <stringValue>Screen2</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>horizontalAlignment</name>
+                <value>
+                    <stringValue>center</stringValue>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+        </fields>
+        <fields>
+            <name>amount</name>
+            <fieldText>&lt;p&gt;&lt;span style=&quot;font-size: 18px;&quot;&gt;Amount:&lt;/span&gt;&lt;strong style=&quot;font-size: 18px;&quot;&gt; {!For_AmountCalculation}&lt;/strong&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Date</name>
+            <dataType>Date</dataType>
+            <defaultValue>
+                <elementReference>$Flow.CurrentDate</elementReference>
+            </defaultValue>
+            <fieldText>Date</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Payment_Options</name>
+            <choiceReferences>Var_PaymentOptions</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Payment Options</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>UPI_ID</name>
+            <dataType>String</dataType>
+            <fieldText>UPI ID</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>Payment_Options</leftValueReference>
+                    <operator>EqualTo</operator>
+                    <rightValue>
+                        <stringValue>GPay/PhonePe</stringValue>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
+        </fields>
+        <fields>
+            <name>Card_Number</name>
+            <dataType>String</dataType>
+            <fieldText>Card Number</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+            <validationRule>
+                <errorMessage>&lt;p&gt;&lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;Card Number should be 12 digits&lt;/span&gt;&lt;/p&gt;</errorMessage>
+                <formulaExpression>{!For_CardValidation}</formulaExpression>
+            </validationRule>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>Payment_Options</leftValueReference>
+                    <operator>EqualTo</operator>
+                    <rightValue>
+                        <stringValue>Credit/Debit Card</stringValue>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
+        </fields>
+        <fields>
+            <name>Payment_Screen_Section1</name>
+            <fieldType>RegionContainer</fieldType>
+            <fields>
+                <name>Payment_Screen_Section1_Column1</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>Expiry_Date</name>
+                    <dataType>Date</dataType>
+                    <fieldText>Expiry Date</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>true</isRequired>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>6</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <fields>
+                <name>Payment_Screen_Section1_Column2</name>
+                <fieldType>Region</fieldType>
+                <fields>
+                    <name>CVV</name>
+                    <dataType>String</dataType>
+                    <fieldText>CVV</fieldText>
+                    <fieldType>InputField</fieldType>
+                    <isRequired>true</isRequired>
+                    <validationRule>
+                        <errorMessage>&lt;p&gt;Enter Valid CVV&lt;/p&gt;</errorMessage>
+                        <formulaExpression>{!For_CVV_Validation}</formulaExpression>
+                    </validationRule>
+                </fields>
+                <inputParameters>
+                    <name>width</name>
+                    <value>
+                        <stringValue>6</stringValue>
+                    </value>
+                </inputParameters>
+                <isRequired>false</isRequired>
+            </fields>
+            <isRequired>false</isRequired>
+            <regionContainerType>SectionWithoutHeader</regionContainerType>
+            <visibilityRule>
+                <conditionLogic>and</conditionLogic>
+                <conditions>
+                    <leftValueReference>Payment_Options</leftValueReference>
+                    <operator>EqualTo</operator>
+                    <rightValue>
+                        <stringValue>Credit/Debit Card</stringValue>
+                    </rightValue>
+                </conditions>
+            </visibilityRule>
+        </fields>
+        <nextOrFinishButtonLabel>Confirm</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>Renewal</name>
+        <label>Renewal</label>
+        <locationX>50</locationX>
+        <locationY>458</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <connector>
+            <targetReference>Payment_Screen</targetReference>
+        </connector>
+        <fields>
+            <name>Screen1</name>
+            <extensionName>flowruntime:image</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>imageName</name>
+                <value>
+                    <stringValue>Screen1</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>horizontalAlignment</name>
+                <value>
+                    <stringValue>center</stringValue>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+        </fields>
+        <fields>
+            <name>Membership_Plan</name>
+            <choiceReferences>Var_Membership</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Membership Plan</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Subscription_Type</name>
+            <choiceReferences>var_Subscription</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Subscription Type</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <nextOrFinishButtonLabel>Proceed</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <screens>
+        <name>Sub_Error</name>
+        <label>Sub Error</label>
+        <locationX>578</locationX>
+        <locationY>782</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>true</allowPause>
+        <fields>
+            <name>subs_Err</name>
+            <fieldText>&lt;p&gt;Unable to create subscription!!!&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <showFooter>true</showFooter>
+        <showHeader>true</showHeader>
+    </screens>
+    <screens>
+        <name>Success</name>
+        <label>Success</label>
+        <locationX>50</locationX>
+        <locationY>890</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <allowPause>false</allowPause>
+        <fields>
+            <name>Screen3</name>
+            <extensionName>flowruntime:image</extensionName>
+            <fieldType>ComponentInstance</fieldType>
+            <inputParameters>
+                <name>imageName</name>
+                <value>
+                    <stringValue>Screen3</stringValue>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>horizontalAlignment</name>
+                <value>
+                    <stringValue>center</stringValue>
+                </value>
+            </inputParameters>
+            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <isRequired>true</isRequired>
+            <storeOutputAutomatically>true</storeOutputAutomatically>
+        </fields>
+        <fields>
+            <name>Paid</name>
+            <fieldText>&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;font-family: verdana; font-size: 24px;&quot;&gt;Your Payment has been Successfully completed!!!&lt;/strong&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;br&gt;&lt;/p&gt;&lt;p style=&quot;text-align: center;&quot;&gt;&lt;strong style=&quot;font-family: verdana; font-size: 24px;&quot;&gt;Thanks for Renewal...&lt;/strong&gt;&lt;/p&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <nextOrFinishButtonLabel>Done</nextOrFinishButtonLabel>
+        <showFooter>true</showFooter>
+        <showHeader>false</showHeader>
+    </screens>
+    <start>
+        <locationX>320</locationX>
+        <locationY>0</locationY>
+        <connector>
+            <targetReference>Enter_Member_ID</targetReference>
+        </connector>
+    </start>
+    <status>Obsolete</status>
+    <textTemplates>
+        <name>var_MembershipDetails</name>
+        <isViewedAsPlainText>false</isViewedAsPlainText>
+        <text>&lt;div&gt;
+    &lt;div style=&quot;display:flex;flex-direction:row;background-image:linear-gradient(to bottom right,#66ccff,white);color:white&quot;&gt;
+
+   
+&lt;div style=&quot;display:flex;flex-direction:column;width:50%;padding:1%&quot;&gt;
+ &lt;p&gt;&lt;strong style=&quot;font-size:22px;display:inline-block;width:135px;font-family:serif&quot;&gt;Name:&lt;/strong&gt;&lt;span style=&quot;font-size:22px;font-family:serif;color:rgb(101,125,231)&quot;&gt;Pavitra chandrasekaran&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong style=&quot;font-size:22px;display:inline-block;width:135px;font-family:serif&quot;&gt;Phone:&lt;/strong&gt;&lt;span style=&quot;font-size:22px;font-family:serif&quot;&gt;&lt;/span&gt;&lt;span style=&quot;font-size:22px;font-family:serif;color:rgb(101,125,231)&quot;&gt;949394768&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong style=&quot;font-size:22px;display:inline-block;width:135px;font-family:serif&quot;&gt;Email:&lt;/strong&gt;&lt;span style=&quot;font-size:22px;font-family:serif&quot;&gt;&lt;/span&gt;&lt;span style=&quot;font-size:22px;font-family:serif;color:rgb(101,125,231)&quot;&gt;&lt;a href=&quot;mailto:pavitra.cil8@mail.com&quot; target=&quot;_blank&quot; rel=&quot;noreferrer&quot;&gt;pavitra.cil8@mail.com&lt;/a&gt;&lt;/span&gt;&lt;/p&gt;&lt;p&gt;&lt;strong style=&quot;font-size:22px;font-family:serif;display:inline-block;width:135px&quot;&gt;Branch:&lt;/strong&gt;&lt;span style=&quot;font-size:22px;font-family:serif;color:rgb(101,125,231)&quot;&gt;Navalur&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong style=&quot;font-size:22px;display:inline-block;width:135px;font-family:serif&quot;&gt;Membership:&lt;/strong&gt;&lt;span style=&quot;font-size:22px;font-family:serif&quot;&gt;&lt;/span&gt;&lt;span style=&quot;font-size:22px;font-family:serif;color:rgb(101,125,231)&quot;&gt;Gold&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+
+&lt;div style=&quot;display:flex;flex-direction:column;width:50%;padding:2%&quot;&gt;
+&lt;p&gt;&lt;strong style=&quot;font-size:22px;display:inline-block;width:230px;font-family:serif&quot;&gt;Subscription:&lt;/strong&gt;&lt;span style=&quot;font-size:22px;font-family:serif&quot;&gt;&lt;/span&gt;&lt;span style=&quot;font-size:22px;font-family:serif;color:rgb(101,125,231)&quot;&gt;Quarterly&lt;/span&gt;&lt;/p&gt;
+
+
+&lt;p&gt;&lt;strong style=&quot;font-size:22px;display:inline-block;width:230px;font-family:serif&quot;&gt;Subscription Start Date:&lt;/strong&gt;&lt;span style=&quot;color:rgb(68,68,68);font-size:22px;font-family:serif&quot;&gt;&lt;/span&gt;&lt;span style=&quot;color:rgb(101,125,231);font-size:22px;font-family:serif&quot;&gt;Oct 1st 2023&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong style=&quot;font-size:22px;display:inline-block;width:230px;font-family:serif&quot;&gt;Subscription End Date:&lt;/strong&gt;&lt;span style=&quot;color:rgb(68,68,68);font-size:22px;font-family:serif&quot;&gt;&lt;/span&gt;&lt;span style=&quot;color:rgb(101,125,231);font-size:22px;font-family:serif&quot;&gt;Dec 31 2023&lt;/span&gt;&lt;/p&gt;
+
+&lt;p&gt;&lt;strong style=&quot;font-size:22px;display:inline-block;width:230px;font-family:serif&quot;&gt;Trainer Name:&lt;/strong&gt;&lt;span style=&quot;color:rgb(68,68,68);font-size:22px;font-family:serif&quot;&gt;&lt;/span&gt;&lt;span style=&quot;color:rgb(101,125,231);font-size:22px;font-family:serif&quot;&gt;Abhi&lt;/span&gt;&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;/div&gt;</text>
+    </textTemplates>
+</Flow>

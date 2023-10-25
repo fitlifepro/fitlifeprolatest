@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Facilities --></label>
+        <name>Facilities__c</name>
+        <picklistValues>
+            <masterLabel>Locker Room</masterLabel>
+            <translation><!-- Locker Room --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pool</masterLabel>
+            <translation><!-- Pool --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Sauna</masterLabel>
+            <translation><!-- Sauna --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

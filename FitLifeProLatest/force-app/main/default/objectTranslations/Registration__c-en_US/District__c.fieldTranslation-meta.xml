@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- District --></label>
+        <name>District__c</name>
+        <picklistValues>
+            <masterLabel>Aberdeen</masterLabel>
+            <translation><!-- Aberdeen --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Albany</masterLabel>
+            <translation><!-- Albany --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Atlanta</masterLabel>
+            <translation><!-- Atlanta --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Austell</masterLabel>
+            <translation><!-- Austell --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bangalore</masterLabel>
+            <translation><!-- Bangalore --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bangor</masterLabel>
+            <translation><!-- Bangor --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Belfast</masterLabel>
+            <translation><!-- Belfast --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Bristol</masterLabel>
+            <translation><!-- Bristol --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Brooklyn</masterLabel>
+            <translation><!-- Brooklyn --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Cardiff</masterLabel>
+            <translation><!-- Cardiff --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Chennai</masterLabel>
+            <translation><!-- Chennai --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Coimbatore</masterLabel>
+            <translation><!-- Coimbatore --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Edinburgh</masterLabel>
+            <translation><!-- Edinburgh --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Ernakulam</masterLabel>
+            <translation><!-- Ernakulam --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Glasgow</masterLabel>
+            <translation><!-- Glasgow --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Helen</masterLabel>
+            <translation><!-- Helen --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Kochi</masterLabel>
+            <translation><!-- Kochi --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Liverpool</masterLabel>
+            <translation><!-- Liverpool --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>London</masterLabel>
+            <translation><!-- London --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Londonderry</masterLabel>
+            <translation><!-- Londonderry --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Los Angeles</masterLabel>
+            <translation><!-- Los Angeles --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Madurai</masterLabel>
+            <translation><!-- Madurai --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Malibu</masterLabel>
+            <translation><!-- Malibu --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Manhattan</masterLabel>
+            <translation><!-- Manhattan --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Marysville</masterLabel>
+            <translation><!-- Marysville --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mumbai</masterLabel>
+            <translation><!-- Mumbai --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mysore</masterLabel>
+            <translation><!-- Mysore --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Nagpur</masterLabel>
+            <translation><!-- Nagpur --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Newry</masterLabel>
+            <translation><!-- Newry --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Olympia</masterLabel>
+            <translation><!-- Olympia --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Pune</masterLabel>
+            <translation><!-- Pune --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>San Francisco</masterLabel>
+            <translation><!-- San Francisco --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Seattle</masterLabel>
+            <translation><!-- Seattle --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Swansea</masterLabel>
+            <translation><!-- Swansea --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Thiruvananthapuram</masterLabel>
+            <translation><!-- Thiruvananthapuram --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Udupi</masterLabel>
+            <translation><!-- Udupi --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

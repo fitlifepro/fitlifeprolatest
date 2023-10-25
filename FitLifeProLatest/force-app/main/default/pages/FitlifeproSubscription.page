@@ -1,0 +1,40 @@
+<apex:page showHeader="false" sidebar="false" standardStylesheets="false">
+    <style>
+     
+body {
+        
+   width: 1500px;
+   height: 1500px;
+   
+}
+.left, .right {
+   float: left;
+   width: 80%;
+   height: 50%;
+}
+        #img1 {
+        	width: 790px;
+        	background-image: url('https://cdn.pixabay.com/photo/2018/04/05/17/21/kettlebell-3293475_1280.jpg');
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+            background-size: contain;
+       		background-position: left;
+        }
+        #inner1{
+            background-color: #333333;
+    		color: black;
+    		height: -webkit-fill-available;
+        }
+    </style>
+        <div id="img1" class="left">
+                        </div>
+
+            <span id = "spn1">
+                <div id = "inner1">
+                        <flow:interview name="FitLife_Pro_Subscription_Renewal_VF_Flow">
+    </flow:interview>
+                </div>
+  
+    </span>  
+                         
+</apex:page>

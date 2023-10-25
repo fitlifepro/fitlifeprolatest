@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Availability_Schedule__c</fullName>
+    <externalId>false</externalId>
+    <inlineHelpText>Please select any one of the slot.</inlineHelpText>
+    <label>Availability Schedule</label>
+    <required>true</required>
+    <trackHistory>false</trackHistory>
+    <trackTrending>false</trackTrending>
+    <type>Picklist</type>
+    <valueSet>
+        <restricted>true</restricted>
+        <valueSetDefinition>
+            <sorted>false</sorted>
+            <value>
+                <fullName>Morning Slot - 6am to 12pm</fullName>
+                <default>false</default>
+                <label>Morning Slot - 6am to 12pm</label>
+            </value>
+            <value>
+                <fullName>Afternoon Slot - 12pm to 4pm</fullName>
+                <default>false</default>
+                <label>Afternoon Slot - 12pm to 4pm</label>
+            </value>
+            <value>
+                <fullName>Evening Slot - 4pm to 10pm</fullName>
+                <default>false</default>
+                <label>Evening Slot - 4pm to 10pm</label>
+            </value>
+        </valueSetDefinition>
+    </valueSet>
+</CustomField>

@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Branch --></label>
+        <name>Area__c</name>
+        <picklistValues>
+            <masterLabel>Gandhipuram</masterLabel>
+            <translation><!-- Gandhipuram --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Guindy</masterLabel>
+            <translation><!-- Guindy --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Mettupalayam</masterLabel>
+            <translation><!-- Mettupalayam --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Navalur</masterLabel>
+            <translation><!-- Navalur --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>OMR</masterLabel>
+            <translation><!-- OMR --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Perur</masterLabel>
+            <translation><!-- Perur --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>R.S Puram</masterLabel>
+            <translation><!-- R.S Puram --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saidapet</masterLabel>
+            <translation><!-- Saidapet --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Saravanampatti</masterLabel>
+            <translation><!-- Saravanampatti --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vadapalani</masterLabel>
+            <translation><!-- Vadapalani --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>
