@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Fitlife_Pro_Leads</fullName>
+    <booleanFilter>1 OR 2</booleanFilter>
+    <columns>FULL_NAME</columns>
+    <columns>LEAD.PHONE</columns>
+    <columns>LEAD.EMAIL</columns>
+    <columns>LEAD.COMPANY</columns>
+    <columns>LEAD.CREATED_DATE</columns>
+    <columns>LEAD.STATUS</columns>
+    <columns>Interest_Type__c</columns>
+    <columns>Mode_Of_Class__c</columns>
+    <columns>Hear_About_Us__c</columns>
+    <filterScope>Mine</filterScope>
+    <filters>
+        <field>Interest_Type__c</field>
+        <operation>equals</operation>
+        <value>Enquiry</value>
+    </filters>
+    <filters>
+        <field>Interest_Type__c</field>
+        <operation>equals</operation>
+        <value>Enquiry</value>
+    </filters>
+    <label>Fitlife Pro Leads</label>
+</ListView>

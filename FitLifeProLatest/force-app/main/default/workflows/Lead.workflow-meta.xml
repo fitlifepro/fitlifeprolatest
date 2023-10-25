@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workflow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <alerts>
+        <fullName>Enquiry_Email_Alert</fullName>
+        <description>Enquiry Email Alert</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>fitlife.pro@ajskill.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>unfiled$public/Enquiry_Email_Template</template>
+    </alerts>
+    <alerts>
+        <fullName>Registration_Email_Alert</fullName>
+        <description>Registration Email Alert</description>
+        <protected>false</protected>
+        <recipients>
+            <recipient>fitlife.pro@ajskill.com</recipient>
+            <type>user</type>
+        </recipients>
+        <senderType>DefaultWorkflowUser</senderType>
+        <template>unfiled$public/Registration_EmailTemplate</template>
+    </alerts>
+</Workflow>

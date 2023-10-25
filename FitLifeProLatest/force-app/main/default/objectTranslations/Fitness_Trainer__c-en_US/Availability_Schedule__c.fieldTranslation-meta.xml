@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <help><!-- Please select any one of the slot. --></help>
+        <label><!-- Availability Schedule --></label>
+        <name>Availability_Schedule__c</name>
+        <picklistValues>
+            <masterLabel>Afternoon Slot - 12pm to 4pm</masterLabel>
+            <translation><!-- Afternoon Slot - 12pm to 4pm --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Evening Slot - 4pm to 10pm</masterLabel>
+            <translation><!-- Evening Slot - 4pm to 10pm --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Morning Slot - 6am to 12pm</masterLabel>
+            <translation><!-- Morning Slot - 6am to 12pm --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

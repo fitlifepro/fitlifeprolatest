@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Diet Plan Name --></label>
+        <name>Diet_Plan_Name__c</name>
+        <picklistValues>
+            <masterLabel>Keto Diet</masterLabel>
+            <translation><!-- Keto Diet --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Low-Carb Diet</masterLabel>
+            <translation><!-- Low-Carb Diet --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>Vegan Diet</masterLabel>
+            <translation><!-- Vegan Diet --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

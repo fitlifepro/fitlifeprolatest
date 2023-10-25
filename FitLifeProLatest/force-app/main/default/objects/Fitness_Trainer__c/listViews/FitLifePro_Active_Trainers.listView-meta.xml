@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ListView xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>FitLifePro_Active_Trainers</fullName>
+    <columns>Trainer_ID__c</columns>
+    <columns>NAME</columns>
+    <columns>Last_Name__c</columns>
+    <columns>Phone_Number__c</columns>
+    <columns>Specialities__c</columns>
+    <columns>Assigned_Members__c</columns>
+    <columns>Working_Status__c</columns>
+    <filterScope>Mine</filterScope>
+    <label>FitLifePro Active Trainers</label>
+</ListView>

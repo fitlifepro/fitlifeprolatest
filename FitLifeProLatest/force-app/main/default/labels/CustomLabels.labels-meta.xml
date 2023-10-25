@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
+    <labels>
+        <fullName>Access_Token_Swapna</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Access Token Swapna</shortDescription>
+        <value>eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyM1I5SkYiLCJzdWIiOiI5V004UzkiLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJyc29jIHJzZXQgcm94eSBybnV0IHJwcm8gcnNsZSByYWN0IHJyZXMgcmxvYyByd2VpIHJociBydGVtIiwiZXhwIjoxNzI4MzEyOTY3LCJpYXQiOjE2OTY3NzY5Njd9.byWsHv-eGxZ-AfdHy4NjzaclaePP1IwhBDzSM5ObLXk</value>
+    </labels>
+    <labels>
+        <fullName>Access_Token_Vijaya</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Access Token Vijaya</shortDescription>
+        <value>eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiIyM1JCSzciLCJzdWIiOiI5WUs3QkciLCJpc3MiOiJGaXRiaXQiLCJ0eXAiOiJhY2Nlc3NfdG9rZW4iLCJzY29wZXMiOiJyc29jIHJzZXQgcm94eSBycHJvIHJudXQgcnNsZSByYWN0IHJyZXMgcmxvYyByd2VpIHJociBydGVtIiwiZXhwIjoxNzI4MTIzNDgzLCJpYXQiOjE2OTY1ODc0ODN9.Eq8F_Bs-VUzT08T_rAfbkHNzF5mH6rN6BCEzcH-0Zy4</value>
+    </labels>
+    <labels>
+        <fullName>FitLife_Pro_Login_URL</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>FitLife Pro Login URL</shortDescription>
+        <value>https://fitlifepro2-dev-ed.develop.my.site.com/s/login/</value>
+    </labels>
+    <labels>
+        <fullName>Registration_Link</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Registration Link</shortDescription>
+        <value>https://fitlifepro2-dev-ed.develop.my.site.com/s/registrationlayout</value>
+    </labels>
+    <labels>
+        <fullName>workflow_Sender_Email_Address</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>workflow Sender Email Address</shortDescription>
+        <value>fitlifpro.health@gmail.com</value>
+    </labels>
+</CustomLabels>

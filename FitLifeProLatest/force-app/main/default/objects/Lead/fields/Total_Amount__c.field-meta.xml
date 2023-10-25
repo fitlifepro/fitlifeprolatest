@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Total_Amount__c</fullName>
+    <externalId>false</externalId>
+    <formula>IF( ISPICKVAL( Membership_Plan__c , &#39;Silver&#39;)&amp;&amp;ISPICKVAL( Subscription__c , &#39;Monthly&#39;) , 99,
+IF( ISPICKVAL( Membership_Plan__c , &#39;Gold&#39;)&amp;&amp;ISPICKVAL( Subscription__c , &#39;Monthly&#39;) , 80,
+IF( ISPICKVAL( Membership_Plan__c , &#39;Platinum&#39;)&amp;&amp;ISPICKVAL( Subscription__c , &#39;Monthly&#39;) , 70,
+IF( ISPICKVAL( Membership_Plan__c , &#39;Silver&#39;)&amp;&amp;ISPICKVAL( Subscription__c , &#39;Quarterly&#39;) , 250,
+IF( ISPICKVAL( Membership_Plan__c , &#39;Gold&#39;)&amp;&amp;ISPICKVAL( Subscription__c , &#39;Quarterly&#39;) , 220,
+IF( ISPICKVAL( Membership_Plan__c , &#39;Platinum&#39;)&amp;&amp;ISPICKVAL( Subscription__c , &#39;Quarterly&#39;) , 200,
+IF( ISPICKVAL( Membership_Plan__c , &#39;Silver&#39;)&amp;&amp;ISPICKVAL( Subscription__c , &#39;Annual&#39;) , 1000,
+IF( ISPICKVAL( Membership_Plan__c , &#39;Gold&#39;)&amp;&amp;ISPICKVAL( Subscription__c , &#39;Annual&#39;) , 1200,
+IF( ISPICKVAL( Membership_Plan__c , &#39;Platinum&#39;)&amp;&amp;ISPICKVAL( Subscription__c , &#39;Annual&#39;) , 1500,
+0
+)))))))))</formula>
+    <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+    <label>Total Amount</label>
+    <precision>18</precision>
+    <required>false</required>
+    <scale>0</scale>
+    <type>Number</type>
+    <unique>false</unique>
+</CustomField>

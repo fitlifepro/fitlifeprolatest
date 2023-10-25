@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomFieldTranslation xmlns="http://soap.sforce.com/2006/04/metadata">
+        <label><!-- Certifications --></label>
+        <name>Certifications__c</name>
+        <picklistValues>
+            <masterLabel>ACE Certified</masterLabel>
+            <translation><!-- ACE Certified --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>ISSA Certified</masterLabel>
+            <translation><!-- ISSA Certified --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NASM Certified</masterLabel>
+            <translation><!-- NASM Certified --></translation>
+        </picklistValues>
+        <picklistValues>
+            <masterLabel>NCSF Certified</masterLabel>
+            <translation><!-- NCSF Certified --></translation>
+        </picklistValues>
+    </CustomFieldTranslation>

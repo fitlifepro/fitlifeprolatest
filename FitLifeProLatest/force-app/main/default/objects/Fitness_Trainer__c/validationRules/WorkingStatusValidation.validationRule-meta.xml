@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ValidationRule xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>WorkingStatusValidation</fullName>
+    <active>false</active>
+    <description>WorkingStatus = &#39;In-active&#39; Validation</description>
+    <errorConditionFormula>AND(ISPICKVAL( Working_Status__c , &quot;In-active&quot;),  NOT(Assigned_Members__c == 0))</errorConditionFormula>
+    <errorMessage>Existing Member should be reassigned to different trainer before changing Trainer as In-active.</errorMessage>
+</ValidationRule>
